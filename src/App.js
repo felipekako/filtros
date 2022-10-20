@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-
+import {useState,useEffect} from "react"
+import Dados from "./components/dados";
+import  Axios  from 'axios';
+import "./App.css";
+import { Fundo } from "./components/Estilizados";
 function App() {
+  const [users,setUsers] = useState([]);
+  useEffect(()=>{
+    Axios.get("https://randomuser.me/api/?results=284")
+      .then(res => setUsers(res.data.results))
+      .catch(err => console.log("erro em pegaros usuarios" ,err))
+  },[]
+  
+  )
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Fundo>
+      <Dados
+        users={users}
+      />
+    </Fundo>
+    </>
   );
 }
 
