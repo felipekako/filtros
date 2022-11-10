@@ -27,10 +27,37 @@ color:#fff
 `;
 
 export const Galeria = styled.div`
-padding-top:25px;
-display: flex;
-flex-direction:row;
-flex-wrap: wrap;
-justify-content: space-around;
-text-align:center;
+    padding-top:25px;
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align:center;
 `;
+export const ModalBackground = styled.div`
+    width: 100vw;
+    height: 100vh;
+    background-color: aqua;
+    position: fixad;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+`
+export const ModalContainer = styled.div`
+    width:500px;
+    height:500px ;
+    border-radius: 12px;
+    background-color: brown;
+    box-shadow:rgba(0,0,0,0.35)  0px;
+    ddisplay: flex;
+    flex-direction: column;
+    padding: 25px
+`
+export const TitltBTN = styled.div`
+    display: flex;
+    justyfy-content: end
+`;
+
+export const Texto = styled.p`
+    color: white;
+`

@@ -1,15 +1,16 @@
 import React from 'react'
 import User from './user';
 import {Galeria } from './Estilizados';
-function Dados({users}) {
+function Dados({users, dadosDoInput}) {
+console.log(dadosDoInput)
   return (
    <>
     <Galeria>
-      {users.map((user)=>
+      {users.map((user,index)=>
       <User
       
       user={user}
-      key={user.id}
+      key={index}
       />
       )}
     </Galeria>

@@ -1,25 +1,31 @@
-import React from 'react'
-import { Quadro } from './Estilizados'
-import {Foto} from './Estilizados'
-import { TextoPerfil } from './Estilizados'
+import React,{useState} from 'react'
+import { Quadro,Foto,TextoPerfil } from './Estilizados'
+import Modal from './Modal'
 function User(props) {
-  let nome= props.user.name.first
-  let sobrenome= props.user.name.last
-  let titulo= props.user.name.title
-  let imagem= props.user.picture.large
-  let idade= props.user.dob.age
-  let telefone= props.user.cell
-  let pais= props.user.location.country
+  let imagem = props.user.picture.large
+  let idade = props.user.dob.age
+  let telefone = props.user.cell
+  let pais = props.user.nat
+  let [showmodal,setShowModal] = useState(false);
+
+  let pessoa = {sobrenome: props.user.name.last ,nome: props.user.name.first, titulo: props.user.name.title}
+  
+  function Clicado(){
+    console.log("clicaram")
+    setShowModal(true)
+  }
 
   return (
-    <> 
-    <Quadro>
-      <TextoPerfil> {titulo} {nome} {sobrenome}</TextoPerfil>
-      <Foto src={imagem}  alt=""/>
-      <TextoPerfil>{idade}anos {telefone} {pais} </TextoPerfil>
-    </Quadro>
-    </>
+    <>
 
+    <Quadro onClick={()=>Clicado()}>
+      <TextoPerfil> {pessoa.titulo} {pessoa.nome} {pessoa.sobrenome}</TextoPerfil>
+      <Foto src={imagem} alt="" />
+      <TextoPerfil>{idade}y {telefone} {pais}</TextoPerfil>
+    </Quadro>
+
+      { showmodal && <Modal user={props.user} setShowModal={setShowModal} />}
+    </>
   )
 }
 
